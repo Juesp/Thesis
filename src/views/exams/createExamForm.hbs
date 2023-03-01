@@ -1,0 +1,103 @@
+<div class="col-md-8 mx-auto mt-0">
+    <div class="card ">
+        <div class="card-header text-center bg-secondary">            
+            <h1 class="h4 text-white font-weight-bold">Agendar hora de examen</h1>
+        </div>
+        <div class="card-body">  
+            <h5 class="font-weight-bold text-center mt-0 mb-1">Información del paciente</h5>
+                <hr class="mt-0 mb-0">                        
+                <div class="form-group row mb-0 mt-2">    
+                    <div class="col-md-4">
+                        <label class="bg-light font-weight-bold">Nombres y apellidos:</label>                           
+                    </div>                
+                    <div >                         
+                        <a class="bg-light">{{info.nameRel}} {{info.lastnameRel}} {{info.sec_lastnameRel}}</a>    
+                    </div>                                         
+                </div>  
+                <div class="form-group row mb-0">    
+                    <div class="col-md-4">
+                        <label class="bg-light font-weight-bold">Correo:</label>                           
+                    </div>                
+                    <div >                         
+                        <a class="bg-light">{{info.emailRel}}</a>    
+                    </div>                                         
+                </div>           
+                <div class="form-group row mb-0">    
+                    <div class="col-md-4">
+                        <label class="bg-light font-weight-bold">Tipo de identificación:</label>                           
+                    </div>                
+                    <div >                         
+                        <a class="bg-light">{{info.identification_typeRel}}</a>    
+                    </div>                                         
+                </div> 
+                <div class="form-group row mb-0">    
+                    <div class="col-md-4">
+                        <label class="bg-light font-weight-bold">Identificación:</label>                           
+                    </div>                
+                    <div >                         
+                        <a class="bg-light">{{info.identificationRel}}</a>    
+                    </div>                                         
+                </div>           
+                
+                    <form action="/exams/createExamHour/{{info.id}}?_method=PUT" class= "justify-content-center" method="POST">  
+                      <input type="hidden" name="_method" value="PUT">  
+                      <div class="form-group row d-flex justify-content-center">                           
+                            <div class="col-md-6 mb-0">
+                              <label for="date_of_exam" class="mb-0">Fecha de examen</label>
+                              <input type="text" readonly=»readonly» class="form-control bg-light mt-0" id="date_of_exam" name="date_of_exam" placeholder="Fecha de Examen"
+                                  value="{{date3}}">
+                            </div>                                     
+                            <div class="col-md-6 mb-0"> 
+                              <label for="hour_of_exam" class="mb-0">Horarios disponibles:</label>
+                              <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>                      
+                              <select class="custom-select mr-sm-2" id="horas" name="hour_of_exam">
+                                  <option selected>--- Seleccione una hora ---</option>
+                                  <option value="6:00am">6:00am</option> 
+                                  <option value="7:00am">7:00am</option>  
+                                  <option value="8:00am">8:00am</option>
+                                  <option value="9:00am">9:00am</option>
+                                  <option value="10:00am">10:00am</option> 
+                                  <option value="11:00am">11:00am</option>                        
+                              </select>
+                              <script>
+                                //var fechas = [{{hours}}];
+                                
+                                $(function() {
+
+                                //var list = ["9:00am", "10:00am"];
+                                let valores = [$("#hora").val()];
+                                let list = [];
+                                valores.forEach(element => {//Para cada valor del array
+                                    element.split(',').forEach(elm => {//Lo divido en 2 por la coma y para cada uno de los resultados
+                                        list.push((elm));//LO meto en el array fin haciéndole un parse a float para evitar comillas
+                                    });
+                                });
+                                //var list = $('#hora').attr("id");
+                                //var list = document.getElementById('hora');
+                                console.log(list)
+                                $('select option').filter(function() { 
+                                    return !($.inArray(this.value, list) == -1);
+                                }).remove();
+                                
+                                });
+                              </script>
+                            </div>
+                            <div class="d-none">
+                              <input type="text" id="hora" value="{{hours}}">
+                            </div>
+                            
+                      </div>                                  
+                      <hr>
+                      {{!-- <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                        <button type="button" class="btn btn-primary btn-block">Guardar</button>
+                      </div> --}}
+                      <div class="col-md-4 mx-auto">                  
+                        <button class="btn btn-primary btn-block">Guardar</button>
+                      </div>
+                    </form>            
+        </div>
+    </div>    
+</div>
+
+<br>

@@ -1,0 +1,486 @@
+<!-- Sidebar  -->
+
+{{#if Admin}}
+<nav id="sidebar">
+    <div class="sidebar-header">
+        <a href="/users/signInForm">
+            <img src="/img/hospital.png" class="mx-auto d-block" width="100%">
+        </a>
+
+        <!-- <h3 class="mb-0 mt-1 text-center font-italic font-weight-bold">
+            <a href="/users/signInForm">PAV</a>
+        </h3>
+        <h5 class="mt-0 mb-0 text-center">Sistema de Información</h5> -->
+
+    </div>
+
+    <ul class="list-unstyled components mt-0">
+        <li class="active mt-0">
+            <a href="/users/signInForm">Inicio</a>
+        </li>
+        <li>
+            <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false"
+                class="dropdown-toggle mt-0">Funciones</a>
+            <ul class="collapse list-unstyled" id="homeSubmenu">
+                <li>
+                    <a href="/users/adminManual">Manual del administrador</a>
+                </li>
+            </ul>
+        </li>
+
+        <li>
+            <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Usuarios</a>
+            <ul class="collapse list-unstyled" id="pageSubmenu">
+                <li>
+                    <a href="/users/createUserForm">Agregar usuario</a>
+                </li>
+                <li>
+                    <a href="/users/seeAllPatientsAdmin">Lista de pacientes</a>
+                </li>
+                <li>
+                    <a href="/users/seeAllPhysicianAdmin">Lista de médicos</a>
+                </li>
+                <li>
+                    <a href="/users/seeAllLabStaffAdmin">Lista de empleados</a>
+                </li>
+                <li>
+                    <a href="/users/seeAllAdmin">Lista de administradores</a>
+                </li>
+                <li>
+                    <a href="/users/seeAllUsersAdmin">Listar todos</a>
+                </li>
+                <li>
+                    <a href="/users/findUserByIdentification">Búsqueda de usuario por cédula</a>
+                </li>
+                <li>
+                    <a href="/users/findUserByEmail">Búsqueda de usuario por email</a>
+                </li>
+            </ul>
+        </li>
+        
+        <li>
+            <a href="#pageSubmenu1" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Exámenes</a>
+            <ul class="collapse list-unstyled" id="pageSubmenu1">
+                <li>
+                    <a href="/exams/seeAllOrderExams">Exámenes ordenados</a>
+                </li>
+                <li>
+                    <a href="/exams/seeAllExams">Exámenes programados</a>
+                </li>
+                <li>
+                    <a href="/exams/addResultExam">Exámenes vencidos</a>
+                </li>                                
+                <li>
+                    <a href="/exams/seeAllCancelExams">Exámenes cancelados</a>
+                </li>
+                <li>
+                    <a href="/exams/addResultExamValueYes">Exámenes realizados</a>
+                </li>
+                <li>
+                    <a href="/exams/addResultExamValue">Exámenes no realizados</a>
+                </li>
+                <li>
+                    <a href="/exams/resultExam">Resultados</a>
+                </li>
+            </ul>
+        </li>
+                                
+        <li>
+            <a href="#pageSubmenu2" data-toggle="collapse" aria-expanded="false"
+                class="dropdown-toggle">Estadísticas</a>
+            <ul class="collapse list-unstyled" id="pageSubmenu2">
+                <li>
+                    <a href="/graphics/generalPromPerMonth">Gráfica general</a>
+                </li>
+            </ul>
+        </li>
+        
+        <li>
+            <a href="#pageSubmenu4" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Mi perfil</a>
+            <ul class="collapse list-unstyled" id="pageSubmenu4">
+                <li>
+                    <a href="/users/myProfile">Mi perfil</a>
+                </li>
+                <li>
+                    <a href="/users/changePasswd">Cambiar mi contraseña</a>
+                </li>
+            </ul>
+        </li>
+
+        <!-- <li>
+            <a href="#">Contact</a>
+        </li>  -->
+    </ul>
+
+    <div class="container-redes">
+        <div class="redes-sociales">
+            <h3 class="net-title">SITIOS DE INTERÉS</h3>
+                <a target="_blank" href="https://www.facebook.com/huhmpn">
+                        <img width="100"
+                            src="/img/ico_facebook.png" class="red-facebook"></a>
+                    <a target="_blank" href="https://www.instagram.com/hospital_universitario_neiva/" >
+                        <img width="100" 
+                            src="/img/ico_instagram.png" class="red-instagram"></a>
+                    <a target="_blank" href="https://www.youtube.com/channel/UC-K8dz6S70CO3hoKbUxkGGQ">
+                        <img width="100" 
+                            src="/img/ico_youtube.png" class="red-youtube"></a>
+                    <a target="_blank" href="https://twitter.com/HUNeiva" >
+                        <img width="100" 
+                            src="/img/ico_twite.png" class="red-twitter"></a>
+        </div>
+    </div>
+    <br>
+
+</nav>
+{{/if}}
+
+{{#if Empleado}}
+<nav id="sidebar">
+    <div class="sidebar-header">
+        <a href="/users/signInForm">
+            <img src="/img/hospital.png" class="mx-auto d-block" width="100%">
+        </a>
+
+        <!-- <h3 class="mb-0 mt-1 text-center font-italic font-weight-bold">
+            <a href="/users/signInForm">PAV</a>
+        </h3>
+        <h5 class="mt-0 mb-0 text-center">Sistema de Información</h5> -->
+
+    </div>
+
+    <ul class="list-unstyled components mt-0">
+        <li class="active mt-0">
+            <a href="/users/signInForm">Inicio</a>
+        </li>
+        <li>
+            <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false"
+                class="dropdown-toggle mt-0">Funciones</a>
+            <ul class="collapse list-unstyled" id="homeSubmenu">
+                <li>
+                    <a href="/users/labStaffManual">Manual del empleado</a>
+                </li>
+            </ul>
+        </li>
+
+        <li>
+            <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Usuarios</a>
+            <ul class="collapse list-unstyled" id="pageSubmenu">
+                <li>
+                    <a href="/users/seeAllPatientsAdmin">Lista de pacientes</a>
+                </li>
+                <li>
+                    <a href="/users/seeAllPhysicianAdmin">Lista de médicos</a>
+                </li>
+                <li>
+                    <a href="/users/seeAllLabStaffAdmin">Lista de empleados</a>
+                </li>
+                <li>
+                    <a href="/users/seeAllAdmin">Lista de administradores</a>
+                </li>
+                <li>
+                    <a href="/users/seeAllUsersAdmin">Listar todos</a>
+                </li>
+                <li>
+                    <a href="/users/findUserByIdentification">Búsqueda de usuario por cédula</a>
+                </li>
+                <li>
+                    <a href="/users/findUserByEmail">Búsqueda de usuario por email</a>
+                </li>
+            </ul>
+        </li>
+
+        
+        <li>
+            <a href="#pageSubmenu1" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Exámenes</a>
+            <ul class="collapse list-unstyled" id="pageSubmenu1">                
+                <li>
+                    <a href="/exams/seeAllOrderExams">Exámenes ordenados</a>
+                </li>
+                <li>
+                    <a href="/exams/seeAllExams">Exámenes programados</a>
+                </li>
+                <li>
+                    <a href="/exams/seeAllCancelExams">Exámenes cancelados</a>
+                </li>
+                <li>
+                    <a href="/exams/addResultExam">Exámenes vencidos</a>
+                </li>
+                <li>
+                    <a href="/exams/addResultExamValueYes">Exámenes realizados</a>
+                </li>
+                <li>
+                    <a href="/exams/addResultExamValue">Exámenes no realizados</a>
+                </li>
+                <li>
+                    <a href="/exams/resultExam">Resultados</a>
+                </li>
+            </ul>
+        </li>
+
+        
+
+        <li>
+            <a href="#pageSubmenu2" data-toggle="collapse" aria-expanded="false"
+                class="dropdown-toggle">Estadísticas</a>
+            <ul class="collapse list-unstyled" id="pageSubmenu2">
+                <li>
+                    <a href="/graphics/generalPromPerMonth">Gráfica general</a>
+                </li>
+            </ul>
+        </li>
+
+        <li>
+            <a href="#pageSubmenu4" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Mi perfil</a>
+            <ul class="collapse list-unstyled" id="pageSubmenu4">
+                <li>
+                    <a href="/users/myProfile">Mi perfil</a>
+                </li>
+                <li>
+                    <a href="/users/changePasswd">Cambiar mi contraseña</a>
+                </li>
+            </ul>
+        </li>
+
+        <!-- <li>
+            <a href="#">Contact</a>
+        </li>  -->
+    </ul>
+
+    <div class="container-redes">
+        <div class="redes-sociales">
+            <h3 class="net-title">SITIOS DE INTERÉS</h3>
+                <a target="_blank" href="https://www.facebook.com/huhmpn">
+                        <img width="100"
+                            src="/img/ico_facebook.png" class="red-facebook"></a>
+                    <a target="_blank" href="https://www.instagram.com/hospital_universitario_neiva/" >
+                        <img width="100" 
+                            src="/img/ico_instagram.png" class="red-instagram"></a>
+                    <a target="_blank" href="https://www.youtube.com/channel/UC-K8dz6S70CO3hoKbUxkGGQ">
+                        <img width="100" 
+                            src="/img/ico_youtube.png" class="red-youtube"></a>
+                    <a target="_blank" href="https://twitter.com/HUNeiva" >
+                        <img width="100" 
+                            src="/img/ico_twite.png" class="red-twitter"></a>
+        </div>
+    </div>
+    <br>
+
+</nav>
+{{/if}}
+
+{{#if Medico}}
+<nav id="sidebar">
+    <div class="sidebar-header">
+        <a href="/users/signInForm">
+            <img src="/img/hospital.png" class="mx-auto d-block" width="100%">
+        </a>
+
+        <!-- <h3 class="mb-0 mt-1 text-center font-italic font-weight-bold">
+            <a href="/users/signInForm">PAV</a>
+        </h3>
+        <h5 class="mt-0 mb-0 text-center">Sistema de Información</h5> -->
+
+    </div>
+
+    <ul class="list-unstyled components mt-0">
+        <li class="active mt-0">
+            <a href="/users/signInForm">Inicio</a>
+        </li>
+        <li>
+            <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false"
+                class="dropdown-toggle mt-0">Funciones</a>
+            <ul class="collapse list-unstyled" id="homeSubmenu">
+                <li>
+                    <a href="/users/physicianManual">Manual del médico</a>
+                </li>
+            </ul>
+        </li>
+
+        <li>
+            <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Usuarios</a>
+            <ul class="collapse list-unstyled" id="pageSubmenu">
+                <li>
+                    <a href="/users/seeAllPatientsAdmin">Lista de pacientes</a>
+                </li>
+                <li>
+                    <a href="/users/seeAllPhysicianAdmin">Lista de médicos</a>
+                </li>
+                <li>
+                    <a href="/users/seeAllLabStaffAdmin">Lista de empleados</a>
+                </li>
+                <li>
+                    <a href="/users/seeAllAdmin">Lista de administradores</a>
+                </li>
+                <li>
+                    <a href="/users/seeAllUsersAdmin">Listar todos</a>
+                </li>
+                <li>
+                    <a href="/users/findUserByIdentification">Búsqueda de usuario por cédula</a>
+                </li>
+                <li>
+                    <a href="/users/findUserByEmail">Búsqueda de usuario por email</a>
+                </li>
+            </ul>
+        </li>
+        
+        <li>
+            <a href="#pageSubmenu1" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Exámenes</a>
+            <ul class="collapse list-unstyled" id="pageSubmenu1">
+                <li>
+                    <a href="/exams/seeUsersForm">Ordenar examen</a>
+                </li>
+                <li>
+                    <a href="/exams/seeAllOrderExams">Exámenes ordenados</a>
+                </li>
+                <li>
+                    <a href="/exams/seeAllExams">Exámenes programados</a>
+                </li>
+                <li>
+                    <a href="/exams/resultExam">Resultados</a>
+                </li>
+            </ul>
+        </li>
+
+        <li>
+            <a href="#pageSubmenu2" data-toggle="collapse" aria-expanded="false"
+                class="dropdown-toggle">Estadísticas</a>
+            <ul class="collapse list-unstyled" id="pageSubmenu2">
+                <li>
+                    <a href="/graphics/generalPromPerMonth">Gráfica general</a>
+                </li>
+            </ul>
+        </li>
+
+        <li>
+            <a href="#pageSubmenu4" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Mi perfil</a>
+            <ul class="collapse list-unstyled" id="pageSubmenu4">
+                <li>
+                    <a href="/users/myProfile">Mi perfil</a>
+                </li>
+                <li>
+                    <a href="/users/changePasswd">Cambiar mi contraseña</a>
+                </li>
+            </ul>
+        </li>
+
+        <!-- <li>
+            <a href="#">Contact</a>
+        </li>  -->
+    </ul>
+
+    <div class="container-redes">
+        <div class="redes-sociales">
+            <h3 class="net-title">SITIOS DE INTERÉS</h3>
+                <a target="_blank" href="https://www.facebook.com/huhmpn">
+                        <img width="100"
+                            src="/img/ico_facebook.png" class="red-facebook"></a>
+                    <a target="_blank" href="https://www.instagram.com/hospital_universitario_neiva/" >
+                        <img width="100" 
+                            src="/img/ico_instagram.png" class="red-instagram"></a>
+                    <a target="_blank" href="https://www.youtube.com/channel/UC-K8dz6S70CO3hoKbUxkGGQ">
+                        <img width="100" 
+                            src="/img/ico_youtube.png" class="red-youtube"></a>
+                    <a target="_blank" href="https://twitter.com/HUNeiva" >
+                        <img width="100" 
+                            src="/img/ico_twite.png" class="red-twitter"></a>
+        </div>
+    </div>
+    <br>
+
+</nav>
+{{/if}}
+
+{{#if Paciente}}
+<nav id="sidebar">
+    <div class="sidebar-header">
+        <a href="/users/signInForm">
+            <img src="/img/hospital.png" class="mx-auto d-block" width="100%">
+        </a>
+
+        <!-- <h3 class="mb-0 mt-1 text-center font-italic font-weight-bold">
+            <a href="/users/signInForm">PAV</a>
+        </h3>
+        <h5 class="mt-0 mb-0 text-center">Sistema de Información</h5> -->
+
+    </div>
+
+    <ul class="list-unstyled components mt-0">
+        <li class="active mt-0">
+            <a href="/users/signInForm">Inicio</a>
+        </li>
+        <li>
+            <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false"
+                class="dropdown-toggle mt-0">Funciones</a>
+            <ul class="collapse list-unstyled" id="homeSubmenu">
+                <li>
+                    <a href="/users/patientManual">Manual del paciente</a>
+                </li>
+            </ul>
+        </li>
+
+        <li>
+            <a href="#pageSubmenu1" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Exámenes</a>
+            <ul class="collapse list-unstyled" id="pageSubmenu1">
+                <li>
+                    <a href="/exams/seeAllExamsByUser">Exámenes pendientes</a>
+                </li>
+                <li>
+                    <a href="/exams/seeAllCancelExamsByUser">Exámenes cancelados</a>
+                </li>
+                <li>
+                    <a href="/exams/seeAllResultByUser">Resultados</a>
+                </li>
+            </ul>
+        </li>
+
+        <li>
+            <a href="#pageSubmenu2" data-toggle="collapse" aria-expanded="false"
+                class="dropdown-toggle">Estadísticas</a>
+            <ul class="collapse list-unstyled" id="pageSubmenu2">
+                <li>
+                    <a href="/graphics/individualGraph">Gráfica personal</a>
+                </li>
+                <li>
+                    <a href="/graphics/generalPromPerMonth">Gráfica general</a>
+                </li>
+            </ul>
+        </li>
+
+        <li>
+            <a href="#pageSubmenu4" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Mi perfil</a>
+            <ul class="collapse list-unstyled" id="pageSubmenu4">
+                <li>
+                    <a href="/users/myProfile">Mi perfil</a>
+                </li>
+                <li>
+                    <a href="/users/changePasswd">Cambiar mi contraseña</a>
+                </li>
+            </ul>
+        </li>
+
+        <!-- <li>
+            <a href="#">Contact</a>
+        </li>  -->
+    </ul>
+
+    <div class="container-redes">
+        <div class="redes-sociales">
+            <h4 class="net-title-patient">SITIOS DE INTERÉS</h4>
+                <a target="_blank" href="https://www.facebook.com/huhmpn">
+                        <img width="100"
+                            src="/img/ico_facebook.png" class="red-facebook"></a>
+                    <a target="_blank" href="https://www.instagram.com/hospital_universitario_neiva/" >
+                        <img width="100" 
+                            src="/img/ico_instagram.png" class="red-instagram"></a>
+                    <a target="_blank" href="https://www.youtube.com/channel/UC-K8dz6S70CO3hoKbUxkGGQ">
+                        <img width="100" 
+                            src="/img/ico_youtube.png" class="red-youtube"></a>
+                    <a target="_blank" href="https://twitter.com/HUNeiva" >
+                        <img width="100" 
+                            src="/img/ico_twite.png" class="red-twitter"></a>
+        </div>
+    </div>
+    <br>
+
+</nav>
+{{/if}}

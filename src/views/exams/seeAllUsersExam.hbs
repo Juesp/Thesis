@@ -1,0 +1,110 @@
+<div class="col-md-10 mx-auto mt-0">
+<div> 
+  <hr>
+  <h2> <p class="font-italic inline">Usuario</p></h2>  
+  <hr>
+</div>
+{{#if pList}}
+  <table class="table table-light table-bordered table-hover overflow-y: hidden">
+    <thead class="table-secondary">
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Nombres</th>
+        <th scope="col">Primer apellido</th>
+        <th scope="col">Segundo apellido</th>
+        <th scope="col">Identificación</th>
+        <th scope="col">Correo electrónico</th>
+        <th scope="col">Tipo</th>      
+        <th scope="col">Ordenar examen</th>
+      </tr>
+    </thead>
+    <tbody>   
+      {{#each pList}} 
+        <tr>
+          <th scope="row">{{@index}}</th>
+          <td>{{name}}</td>
+          <td>{{lastname}}</td>
+          <td>{{sec_lastname}}</td>
+          <td>{{identification}}</td>
+          <td>{{email}}</td>
+          <td>{{role}}</td>
+          <td>        
+            {{!-- <a href="/exams/createExamForm/{{_id}}">
+              <button class="btn btn-success btn-block btn-sm">
+                +
+              </button>
+                            
+            </a>         --}}
+            <button type="button"  class="btn btn-success btn-block btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModal">
+              +
+            </button>
+            <!-- Modal -->
+            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Ordenar nuevo examen</h5>
+                    <button type="button" class="btn-close fa fa-times fa-lg" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body">
+                    ¿Desea ordenar un nuevo examen?
+                    <form action="/exams/createExam" class= "justify-content-center" method="POST">  
+                              
+                      <div class="d-none">                         
+                              <select name="user" class="hidden" aria-hidden="true">
+                                <option value="{{_id}}">{{_id}}</option>
+                              </select>
+                              <select name="identification_typeRel" class="hidden" aria-hidden="true">
+                                <option value="{{identification_type}}">{{identification_typeRel}}</option>
+                              </select>
+                              <select name="identificationRel" class="hidden" aria-hidden="true">
+                                <option value="{{identification}}">{{identification}}</option>
+                              </select>
+                              <select name="nameRel" class="hidden" aria-hidden="true">
+                                <option value="{{name}}">{{name}}</option>
+                              </select>
+                              <select name="lastnameRel" class="hidden" aria-hidden="true">
+                                <option value="{{lastname}}">{{lastname}}</option>
+                              </select>
+                              <select name="sec_lastnameRel" class="hidden" aria-hidden="true">
+                                <option value="{{sec_lastname}}">{{sec_lastname}}</option>
+                              </select>
+                              <select name="emailRel" class="hidden" aria-hidden="true">
+                                <option value="{{email}}">{{email}}</option>
+                              </select>
+                              <select name="state_of_exam" class="hidden" aria-hidden="true">
+                                <option value="activo">activo</option>
+                              </select>
+                          </div>
+                      <div class="modal-footer">                  
+                        <button class="btn btn-primary">Aceptar</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                        
+                      </div>
+                    </form>                    
+                  </div>                  
+                </div>
+              </div>
+            </div>
+          </td>           
+        </tr>
+      {{/each}}     
+    </tbody>
+  </table>
+  <script>
+    var dateInput = document.getElementById('date_of_exam');
+    //console.log(dateInput)
+    dateInput.addEventListener('change', async (event) => {
+        var inputDate = event.path[0].value;
+        console.log(inputDate)
+    });
+  </script>
+{{else}}
+  <br>
+  <br>
+  <br>
+  <div>
+    <h4>No se encontró ningún usuario.</h4>
+  </div>
+{{/if}}
+</div>

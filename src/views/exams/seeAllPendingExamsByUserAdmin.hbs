@@ -1,0 +1,152 @@
+{{#if Admin}}
+<div class="col-md-10 mx-auto mt-0">
+<div> 
+  <hr>
+  <h2> <p class="font-italic inline">Examenes programados</p></h2>  
+  <hr>
+</div>
+  {{#if pList}}
+    <table class="table table-light table-bordered table-hover overflow-y: hidden">
+      <thead class="table-secondary">
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Nombres</th>
+          <th scope="col">Primer apellido</th>
+          <th scope="col">Segundo apellido</th>
+          <th scope="col">Identificación</th>
+          <th scope="col">Fecha</th>
+          <th scope="col">Hora</th>      
+          <th scope="col">Eliminar</th>  
+        </tr>
+      </thead>
+      <tbody>   
+        {{#each pList}} 
+          <tr>
+            <th scope="row">{{@index}}</th>
+            <td>{{nameRel}}</td>
+            <td>{{lastnameRel}}</td>
+            <td>{{sec_lastnameRel}}</td>
+            <td>{{identificationRel}}</td>
+            <td>{{date_of_exam}}</td>
+            <td>{{hour_of_exam}}</td>
+            <td>
+              <form action="/exams/deleteExam/{{_id}}?_method=DELETE" method="POST">
+                <button type="submit" class="btn btn-danger btn-block btn-sm">
+                    Eliminar
+                  </button> 
+              </form>
+            </td> 
+          </tr>
+        {{/each}}     
+      </tbody>
+    </table>
+  {{else}}
+    <br>
+    <br>
+    <br>
+    <div>
+      <h4>No se encontraron exámenes programados.</h4>
+    </div>
+  {{/if}}
+</div>
+{{/if}}
+
+{{#if Empleado}}
+<div class="col-md-10 mx-auto mt-0">
+<div> 
+  <hr>
+  <h2> <p class="font-italic inline">Examenes programados</p></h2>  
+  <hr>
+</div>
+  {{#if pList}}
+    <table class="table table-light table-bordered table-hover overflow-y: hidden">
+      <thead class="table-secondary">
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Nombres</th>
+          <th scope="col">Primer apellido</th>
+          <th scope="col">Segundo apellido</th>
+          <th scope="col">Identificación</th>
+          <th scope="col">Fecha</th>
+          <th scope="col">Hora</th>      
+          <th scope="col">Examen</th>  
+        </tr>
+      </thead>
+      <tbody>   
+        {{#each pList}} 
+          <tr>
+            <th scope="row">{{@index}}</th>
+            <td>{{nameRel}}</td>
+            <td>{{lastnameRel}}</td>
+            <td>{{sec_lastnameRel}}</td>
+            <td>{{identificationRel}}</td>
+            <td>{{date_of_exam}}</td>
+            <td>{{hour_of_exam}}</td>
+            <td>
+              <form action="/exams/cancelExam/{{_id}}?_method=PUT" method="POST">
+              <input type="hidden" name="_method" value="PUT">  
+                <button type="submit" class="btn btn-danger btn-block btn-sm">
+                    Cancelar
+                  </button> 
+                  <input type="hidden" name="state_of_exam" value="cancelado">
+              </form>
+            </td> 
+          </tr>
+        {{/each}}     
+      </tbody>
+    </table>
+  {{else}}
+    <br>
+    <br>
+    <br>
+    <div>
+      <h4>No se encontraron exámenes programados.</h4>
+    </div>
+  {{/if}}
+</div>
+{{/if}}
+
+{{#if Medico}}
+<div class="col-md-10 mx-auto mt-0">
+<div> 
+  <hr>
+  <h2> <p class="font-italic inline">Examenes programados</p></h2>  
+  <hr>
+</div>
+  {{#if pList}}
+    <table class="table table-light table-bordered table-hover overflow-y: hidden">
+      <thead class="table-secondary">
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Nombres</th>
+          <th scope="col">Primer apellido</th>
+          <th scope="col">Segundo apellido</th>
+          <th scope="col">Identificación</th>
+          <th scope="col">Fecha</th>
+          <th scope="col">Hora</th>
+        </tr>
+      </thead>
+      <tbody>   
+        {{#each pList}} 
+          <tr>
+            <th scope="row">{{@index}}</th>
+            <td>{{nameRel}}</td>
+            <td>{{lastnameRel}}</td>
+            <td>{{sec_lastnameRel}}</td>
+            <td>{{identificationRel}}</td>
+            <td>{{date_of_exam}}</td>
+            <td>{{hour_of_exam}}</td>
+          </tr>
+        {{/each}}     
+      </tbody>
+    </table>
+  {{else}}
+    <br>
+    <br>
+    <br>
+    <div>
+      <h4>No se encontraron exámenes programados.</h4>
+    </div>
+  {{/if}}
+</div>
+{{/if}}
