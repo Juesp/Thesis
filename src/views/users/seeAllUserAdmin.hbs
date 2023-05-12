@@ -20,7 +20,7 @@
           <th scope="col">Exámenes realizados</th>      
           <th scope="col">Ver resultados</th>
           <th scope="col">Ver</th>
-          <th scope="col">Eliminar</th>  
+          <!-- <th scope="col">Eliminar</th>  -->
         </tr>
       </thead>
       <tbody>   
@@ -45,13 +45,13 @@
             <td>       
               <a href="/users/seeUserAdminForm/{{_id}}"><button class="btn btn-success btn-block btn-sm">Perfil</button></a>        
             </td>   
-            <td>
+            <!--<td>
               <form action="/users/deleteUserAdmin/{{_id}}?_method=DELETE" method="POST">
                 <button type="submit" class="btn btn-danger btn-block btn-sm">
                     Eliminar
                   </button> 
               </form>
-            </td> 
+            </td> -->
           </tr>
         {{/each}}     
       </tbody>

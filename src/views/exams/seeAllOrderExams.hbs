@@ -15,7 +15,7 @@
           <th scope="col">Segundo apellido</th>
           <th scope="col">Identificación</th>
           <th scope="col">Correo</th>
-          <th scope="col">Eliminar</th>  
+          <!-- <th scope="col">Eliminar</th>  -->
         </tr>
       </thead>
       <tbody>   
@@ -27,13 +27,13 @@
             <td>{{sec_lastnameRel}}</td>
             <td>{{identificationRel}}</td>
             <td>{{emailRel}}</td>
-            <td>
+            <!--<td>
               <form action="/exams/deleteExam/{{_id}}?_method=DELETE" method="POST">
                 <button type="submit" class="btn btn-danger btn-block btn-sm">
                     Eliminar
                   </button> 
               </form>
-            </td> 
+            </td> -->
           </tr>
         {{/each}}     
       </tbody>

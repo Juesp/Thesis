@@ -18,7 +18,7 @@
           <th scope="col">Hora</th>
           <th scope="col">Resultado</th>
           <th scope="col">Descripción</th>
-          <th scope="col">Eliminar</th>  
+          <!-- <th scope="col">Eliminar</th>  -->
         </tr>
       </thead>
       <tbody>   
@@ -33,13 +33,13 @@
             <td>{{hour_of_exam}}</td>
             <td>{{result_of_exam}} ug/mL</td>
             <td>{{description_of_exam}}</td>
-            <td>
+            <!-- <td>
                 <form action="/exams/deleteExam/{{_id}}?_method=DELETE" method="POST">
                 <button type="submit" class="btn btn-danger btn-block btn-sm">
                     Eliminar
                   </button> 
               </form>
-            </td>
+            </td> -->
           </tr>
         {{/each}}     
       </tbody>
