@@ -54,22 +54,28 @@ usersCtrl.logout = (req, res)=>{
 
 //Crea un usuario de cualquier tipo: admin, paciente, laboratorio o médico.
 usersCtrl.createUserForm = (req, res)=>{
-    var Admin = null;
+    var Admin = Empleado = null;
     if(req.user.role == 'Admin'){
         Admin = true;        
+    }
+    if(req.user.role == 'Empleado'){
+        Empleado = true;        
     }
     const name = req.user.name;
     const lastname = req.user.lastname;
     const sec_lastname = req.user.sec_lastname;
     const rol = req.user.role;
-    res.render('users/createUserForm', {Admin, name, lastname, sec_lastname, rol});
+    res.render('users/createUserForm', {Admin, Empleado, name, lastname, sec_lastname, rol});
     
 };
 usersCtrl.createUser = async (req, res)=>{
     //console.log(req.body)    revisar por si hay error
-    var Admin = null;
+    var Admin = Empleado = null;
     if(req.user.role == 'Admin'){
         Admin = true;        
+    }
+    if(req.user.role == 'Empleado'){
+        Empleado = true;        
     }
     const errors = [];
     const { identification_type, identification, name, lastname, sec_lastname, ///Información personal
@@ -154,7 +160,7 @@ usersCtrl.createUser = async (req, res)=>{
     if (errors.length > 0) {
         res.render('users/createUserForm', { errors, identification_type, identification, name, lastname, sec_lastname, 
             date_of_bird, gender, blood_type, rh, marital_status, EPS, home_phone, mobile_phone, work_phone, address, city, department,
-            role, email, contact_name, contact_lastname, contact_sec_lastname, contact_relationship, contact_phone, Admin});
+            role, email, contact_name, contact_lastname, contact_sec_lastname, contact_relationship, contact_phone, Admin, Empleado});
     }else {
         const data = { identification_type, identification, name, lastname, sec_lastname, 
             date_of_bird, gender, blood_type, rh, marital_status, EPS, home_phone, mobile_phone, work_phone, address, city, department,

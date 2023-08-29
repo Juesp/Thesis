@@ -15,6 +15,7 @@
           <th scope="col">Segundo apellido</th>
           <th scope="col">Identificación</th>
           <th scope="col">Correo</th>
+          <th scope="col">Observación</th>
           <!-- <th scope="col">Eliminar</th>  -->
         </tr>
       </thead>
@@ -27,6 +28,7 @@
             <td>{{sec_lastnameRel}}</td>
             <td>{{identificationRel}}</td>
             <td>{{emailRel}}</td>
+            <td>{{observation_of_exam}}</td>
             <!--<td>
               <form action="/exams/deleteExam/{{_id}}?_method=DELETE" method="POST">
                 <button type="submit" class="btn btn-danger btn-block btn-sm">
@@ -66,7 +68,7 @@
           <th scope="col">Primer apellido</th>
           <th scope="col">Segundo apellido</th>
           <th scope="col">Identificación</th>
-          <th scope="col">Correo</th>
+          <th scope="col">Observación</th>
           <th scope="col">Agendar fecha</th>      
           <th scope="col">Examen</th>  
           
@@ -81,7 +83,7 @@
             <td>{{lastnameRel}}</td>
             <td>{{sec_lastnameRel}}</td>
             <td>{{identificationRel}}</td>
-            <td>{{emailRel}}</td>
+            <td>{{observation_of_exam}}</td>
             <td>
               {{!-- <button type="button" data-id="{{_id}}"  class="btn btn-success edit"  data-bs-target="#exampleModal">
               +
@@ -257,6 +259,7 @@
           <th scope="col">Segundo apellido</th>
           <th scope="col">Identificación</th>
           <th scope="col">Correo</th>
+          <th scope="col">Observación</th>
         </tr>
       </thead>
       <tbody>   
@@ -268,6 +271,7 @@
             <td>{{sec_lastnameRel}}</td>
             <td>{{identificationRel}}</td>
             <td>{{emailRel}}</td>
+            <td>{{observation_of_exam}}</td>
           </tr>
         {{/each}}     
       </tbody>

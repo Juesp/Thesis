@@ -101,7 +101,7 @@ examsCtrl.createExamHour = async (req, res)=>{
     }else {
         await Exams.findByIdAndUpdate(req.params.id, {hour_of_exam, date_of_exam})  
                 const admin = true
-                req.flash('success_msg', 'Examen agregado satisfactoriamente.');
+                req.flash('success_msg', 'Examen agendado satisfactoriamente.');
                 res.redirect('/users/started')
             }
 };
@@ -134,7 +134,7 @@ examsCtrl.createExam = async (req, res)=>{
 
     const errors = []; 
 
-    const {state_of_exam, user, identification_typeRel, identificationRel, nameRel, lastnameRel, sec_lastnameRel, emailRel} = req.body;
+    const {state_of_exam, user, observation_of_exam, identification_typeRel, identificationRel, nameRel, lastnameRel, sec_lastnameRel, emailRel} = req.body;
 
     /* if(date_of_exam === '') {
         errors.push({ text: 'Debe ingresar la fecha de examen.'})
@@ -143,7 +143,7 @@ examsCtrl.createExam = async (req, res)=>{
     if (errors.length > 0) {
         res.render('exams/seeUsersForm', { errors, Medico, name, lastname, sec_lastname, rol});
     }else {
-        const data = {state_of_exam, user, identification_typeRel, identificationRel, nameRel, lastnameRel, sec_lastnameRel, emailRel };
+        const data = {state_of_exam, user, observation_of_exam, identification_typeRel, identificationRel, nameRel, lastnameRel, sec_lastnameRel, emailRel };
         const newExam = new Exams(data);
         console.log(newExam)
         await newExam.save();

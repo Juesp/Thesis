@@ -11,6 +11,9 @@ const ExamSchema = new Schema ({
     result_of_exam: {
         type: String
     },
+    observation_of_exam: {
+        type: String
+    },
     description_of_exam: {
         type: String
     },

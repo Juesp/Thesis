@@ -24,8 +24,8 @@ router.get('/users/logout', logout);
 //router.get('/users/createUserForm',  isAuthenticated, isAdmin, createUserForm);
 //router.post('/users/createUser', isAuthenticated, isAdmin, createUser);
 
-router.get('/users/createUserForm',  isAuthenticated, isAdmin, createUserForm);
-router.post('/users/createUser', isAuthenticated, isAdmin, createUser);
+router.get('/users/createUserForm',  isAuthenticated, isAdminEmple, createUserForm);
+router.post('/users/createUser', isAuthenticated, isAdminEmple, createUser);
 
 //funciones
 router.get('/users/adminManual',  isAuthenticated, isAdmin, adminManual);

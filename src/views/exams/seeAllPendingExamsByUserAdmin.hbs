@@ -16,6 +16,7 @@
           <th scope="col">Identificación</th>
           <th scope="col">Fecha</th>
           <th scope="col">Hora</th>      
+          <th scope="col">Observación</th>
           <!-- <th scope="col">Eliminar</th>  -->
         </tr>
       </thead>
@@ -29,6 +30,7 @@
             <td>{{identificationRel}}</td>
             <td>{{date_of_exam}}</td>
             <td>{{hour_of_exam}}</td>
+            <td>{{observation_of_exam}}</td>
             <!-- <td>
               <form action="/exams/deleteExam/{{_id}}?_method=DELETE" method="POST">
                 <button type="submit" class="btn btn-danger btn-block btn-sm">
@@ -69,6 +71,8 @@
           <th scope="col">Identificación</th>
           <th scope="col">Fecha</th>
           <th scope="col">Hora</th>      
+          <th scope="col">Observación</th>
+          <th scope="col">Ver</th>
           <th scope="col">Examen</th>  
         </tr>
       </thead>
@@ -82,6 +86,10 @@
             <td>{{identificationRel}}</td>
             <td>{{date_of_exam}}</td>
             <td>{{hour_of_exam}}</td>
+            <td>{{observation_of_exam}}</td>
+            <td>        
+                <a href="/exams/editExamForm/{{_id}}"><button class="btn btn-success btn-block btn-sm">Editar</button></a>
+            </td>
             <td>
               <form action="/exams/cancelExam/{{_id}}?_method=PUT" method="POST">
               <input type="hidden" name="_method" value="PUT">  
@@ -124,6 +132,7 @@
           <th scope="col">Identificación</th>
           <th scope="col">Fecha</th>
           <th scope="col">Hora</th>
+          <th scope="col">Observación</th>
         </tr>
       </thead>
       <tbody>   
@@ -136,6 +145,7 @@
             <td>{{identificationRel}}</td>
             <td>{{date_of_exam}}</td>
             <td>{{hour_of_exam}}</td>
+            <td>{{observation_of_exam}}</td>
           </tr>
         {{/each}}     
       </tbody>
