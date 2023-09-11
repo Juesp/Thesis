@@ -17,6 +17,12 @@ const ExamSchema = new Schema ({
     description_of_exam: {
         type: String
     },
+    name_of_doctor: {
+        type: String
+    },
+    lastname_of_doctor: {
+        type: String
+    },
     state_of_exam: {
         type: String
     },

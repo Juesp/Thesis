@@ -127,8 +127,8 @@ examsCtrl.createExam = async (req, res)=>{
     if(req.user.role == 'Medico'){
         Medico = true;        
     }
-    const name = req.user.name;
-    const lastname = req.user.lastname;
+    const name_of_doctor = req.user.name;
+    const lastname_of_doctor = req.user.lastname;
     const sec_lastname = req.user.sec_lastname;
     const rol = req.user.role;
 
@@ -141,9 +141,9 @@ examsCtrl.createExam = async (req, res)=>{
     } */
 
     if (errors.length > 0) {
-        res.render('exams/seeUsersForm', { errors, Medico, name, lastname, sec_lastname, rol});
+        res.render('exams/seeUsersForm', { errors, Medico, name_of_doctor, lastname_of_doctor, sec_lastname, rol});
     }else {
-        const data = {state_of_exam, user, observation_of_exam, identification_typeRel, identificationRel, nameRel, lastnameRel, sec_lastnameRel, emailRel };
+        const data = {state_of_exam, user, observation_of_exam, name_of_doctor, lastname_of_doctor, identification_typeRel, identificationRel, nameRel, lastnameRel, sec_lastnameRel, emailRel };
         const newExam = new Exams(data);
         console.log(newExam)
         await newExam.save();
