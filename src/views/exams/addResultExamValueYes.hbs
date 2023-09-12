@@ -76,6 +76,7 @@
           <th scope="col">Médico que ordena</th>
           <th scope="col">Observación del médico</th>
           <th scope="col">Agregar resultados</th>
+          <th scope="col">¿Examen no realizado?</th>
         </tr>
       </thead>
       <tbody>   
@@ -92,6 +93,15 @@
             <td>{{observation_of_exam}}</td>
             <td>
                 <a href="/exams/addResultForm/{{_id}}"><button class="btn btn-success btn-block">+</button></a>
+            </td>
+            <td>        
+                <form action="/exams/valueExam/{{_id}}?_method=PUT" method="POST">
+                  <input type="hidden" name="_method" value="PUT">  
+                    <button type="submit" class="btn btn-danger btn-block nobtn">
+                        No
+                    </button> 
+                  <input type="hidden" name="value_of_exam" value="notAssist">
+                </form>
             </td>
           </tr>
         {{/each}}     

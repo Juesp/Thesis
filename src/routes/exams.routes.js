@@ -4,7 +4,7 @@ const router =Router();
 const {isAuthenticated, isAdmin, isLab_Staff, isPhysician, isAdminEmple, isAdminMedi, isAdminEmpleMedi} = require('../helpers/auth');
 
 const { valueExam, createExamHour, addResultExamValue, addResultExamValueYes, seeAllOrderExams, seeAllCancelExamsByUser, seeAllCancelExams, cancelExam, obtainDate, seeUsersForm, seeUser, seeAllExams, seeAllExamsByUser, seeAllResultByUser, seeAllExamsByUserAdmin, seeAllResultByUserAdmin, createExam, createExamForm, seeAllResults, 
-    seeAllResultsPerPatient, addResultExam, resultExam, seeAllPendingExamsByUserAdmin, editExamForm, editExam, deleteExam, addResult, addResultForm, seeAllUsersExam, seeAllUsersResult } = require('../controllers/exams.controllers');
+    seeAllResultsPerPatient, addResultExam, resultExam, seeAllOrderExamsByUserAdmin, seeAllPendingExamsByUserAdmin, editExamForm, editExam, deleteExam, addResult, addResultForm, seeAllUsersExam, seeAllUsersResult } = require('../controllers/exams.controllers');
 
 //Crear examenes nuevos
 router.get('/exams/seeUsersForm',  isAuthenticated, isPhysician, seeUsersForm); //filtrar la cedula para el examen
@@ -47,6 +47,7 @@ router.get('/exams/seeAllResultByUser', isAuthenticated, seeAllResultByUser);//*
 
 //Examenes pendientes(todos los de cada paciente para agregar resultados) seeAllResultByUserAdmin
 router.get('/exams/seeAllExamsByUserAdmin/:id', isAuthenticated, isAdminEmpleMedi, seeAllExamsByUserAdmin);//ya
+router.get('/exams/seeAllOrderExamsByUserAdmin/:id', isAuthenticated, isAdminEmpleMedi, seeAllOrderExamsByUserAdmin);//ya
 router.get('/exams/seeAllPendingExamsByUserAdmin/:id', isAuthenticated, isAdminEmpleMedi, seeAllPendingExamsByUserAdmin);//ya
 router.get('/exams/seeAllResultByUserAdmin/:id', isAuthenticated, isAdminEmpleMedi, seeAllResultByUserAdmin);//**modificando**
 
@@ -65,7 +66,7 @@ router.get('/exams/editExamForm/:id', isAuthenticated, isLab_Staff, editExamForm
 router.put('/exams/editExam/:id', isAuthenticated, isLab_Staff, editExam);//ya///actualiza usuario
 
 router.put('/exams/cancelExam/:id', isAuthenticated, isLab_Staff, cancelExam);
-router.put('/exams/valueExam/:id', isAuthenticated, isLab_Staff, valueExam);
+router.put('/exams/valueExam/:id', isAuthenticated, isAdminEmple, valueExam);
 //////////////Borrar usuarios //////////////////////////////
 router.delete('/exams/deleteExam/:id', isAuthenticated, isAdmin, deleteExam);//ya
 

@@ -347,8 +347,10 @@ examsCtrl.addResultExamValue = async (req, res)=>{
 
 //Ver todos los examenes a los que los pacientes si asistieron
 examsCtrl.addResultExamValueYes = async (req, res)=>{       
-    const pList = await Exams.find({$and: [{result_of_exam :  null},{value_of_exam: "yesAssist"}]}).sort({date_of_exam: -1});
-    //const pList = await Exams.find();
+    //const pList = await Exams.find({$and: [{result_of_exam :  null},{value_of_exam: "yesAssist"}]}).sort({date_of_exam: -1});
+    const date = new Date();
+    const currentDate = date.getFullYear() + '-' + String(date.getMonth() + 1).padStart(2, '0') + '-' +String(date.getDate()).padStart(2, '0');
+    const pList = await Exams.find({$and: [{$or: [{value_of_exam: "yesAssist"}, {value_of_exam: null}]},{result_of_exam : null}, {date_of_exam: {$lt: currentDate}}, {state_of_exam: "activo"}]}).sort({date_of_exam: -1});
     var Admin = Empleado = Medico = null;
     if(req.user.role == 'Admin'){
         Admin = true;        
@@ -476,12 +478,13 @@ examsCtrl.seeAllExamsByUserAdmin = async (req, res) => {
     const user1 = await User.findById(req.params.id);
     const exam = String(user1._id);
     //console.log(exam)
+    //const date = new Date();
+    //const currentDate = date.getFullYear() + '-' + String(date.getMonth() + 1).padStart(2, '0') + '-' +String(date.getDate()).padStart(2, '0');
+    //const pList = await Exams.find({$and: [{user : exam}, {result_of_exam : null}, {value_of_exam: "yesAssist"}, {date_of_exam: {$lt: currentDate}}, {state_of_exam: "activo"}]}).sort({date_of_exam: -1});
     const date = new Date();
     const currentDate = date.getFullYear() + '-' + String(date.getMonth() + 1).padStart(2, '0') + '-' +String(date.getDate()).padStart(2, '0');
-    //const pList = await Exam.find({date_of_exam: {$lt: currentDate}});
-    const pList = await Exams.find({$and: [{user : exam}, {result_of_exam : null}, {value_of_exam: "yesAssist"}, {date_of_exam: {$lt: currentDate}}, {state_of_exam: "activo"}]}).sort({date_of_exam: -1});
-    //console.log(pList)
-    //console.log(user1)
+    const pList = await Exams.find({$and: [{$or: [{value_of_exam: "yesAssist"}, {value_of_exam: null}]},{user : exam}, {result_of_exam : null}, {date_of_exam: {$lt: currentDate}}, {state_of_exam: "activo"}]}).sort({date_of_exam: -1});
+    var Admin = Empleado = Medico = null;
     var Admin = Empleado = null;
     if(req.user.role == 'Admin'){
         Admin = true;        
@@ -497,6 +500,41 @@ examsCtrl.seeAllExamsByUserAdmin = async (req, res) => {
     const sec_lastname = req.user.sec_lastname;
     const rol = req.user.role;
     res.render('exams/seeAllExamsByUserAdmin', {pList, Admin, Empleado, Medico, name, lastname, sec_lastname, rol}); 
+}
+
+examsCtrl.seeAllOrderExamsByUserAdmin = async (req, res) => {
+    //console.log('Viendo un usuario') 
+    const user1 = await User.findById(req.params.id);
+    const exam = String(user1._id);
+    //console.log(exam)
+    const fullExam = await Exams.aggregate([{$match: {state_of_exam: "activo"}},{ $group: {_id: "$date_of_exam", count: { $sum: 1} } }, { $match: {count: {"$gte": 6}}}]);
+    console.log(fullExam)
+    const fechasFull = [];
+    const fechasCorrect = [];
+    for (i=0; i<fullExam.length; i++){
+        fechasFull.push(Date.parse(fullExam[i]._id));
+    }
+    for (i=0; i<fechasFull.length; i++){
+        fechasCorrect.push(new Date(fechasFull[i]).toLocaleDateString());
+    }
+    console.log(fechasFull)
+    console.log(fechasCorrect)
+    const pList = await Exams.find({$and: [{user : exam}, {date_of_exam : null}, {hour_of_exam : null}, {state_of_exam: "activo"}]}).sort({date_of_exam: 1});
+    var Admin = Empleado = null;
+    if(req.user.role == 'Admin'){
+        Admin = true;        
+    }
+    if(req.user.role == 'Empleado'){
+        Empleado = true;        
+    }
+    if(req.user.role == 'Medico'){
+        Medico = true;        
+    }
+    const name = req.user.name;
+    const lastname = req.user.lastname;
+    const sec_lastname = req.user.sec_lastname;
+    const rol = req.user.role;
+    res.render('exams/seeAllOrderExamsByUserAdmin', {pList, Admin, Empleado, Medico, name, lastname, sec_lastname, rol}); 
 }
 
 examsCtrl.seeAllPendingExamsByUserAdmin = async (req, res) => {
@@ -636,7 +674,7 @@ examsCtrl.valueExam = async (req, res) => {
                 await Exams.findByIdAndUpdate(req.params.id, {value_of_exam})  
                 const admin = true
                 req.flash('success_msg', 'Estado del examen indicado satisfactoriamente.');
-                res.redirect('/exams/addResultExam')
+                res.redirect('/exams/addResultExamValueYes')
 }; 
 
 //////Permite borrar examenes///////
