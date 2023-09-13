@@ -167,4 +167,139 @@ graphicsCtrl.individualGraph = async (req, res)=>{
     res.render('graphics/individualGraph', {resultados, fechas, Admin, Empleado, Paciente, name, lastname, sec_lastname, rol});
 };
 
+graphicsCtrl.generalPromPerGender = async (req, res)=>{     
+    const date = new Date();
+    const currentYear = String(date.getFullYear());
+    //console.log(currentYear)
+    const Male = await Exams.find({$and: [{genderRel: "Masculino"}, {result_of_exam : {$ne : null}}]});
+    const Female = await Exams.find({$and: [{genderRel: "Femenino"}, {result_of_exam : {$ne : null}}]});
+    const Other = await Exams.find({$and: [{genderRel: "Otro"}, {result_of_exam : {$ne : null}}]});
+    //console.log(Male)
+    //console.log("-----------------")
+    //console.log(Female)
+    //Datos para masculinos
+    var sumMale = 0;
+    const largoMale = Male.length;
+    for (i=0; i<Male.length; i++){
+        sumMale+= parseFloat(Male[i].result_of_exam);
+    }
+    const promMale = sumMale/largoMale;
+    
+    //Datos para femenino
+    var sumFemale = 0;
+    const largoFemale = Female.length;
+    for (i=0; i<Female.length; i++){
+        sumFemale+= parseFloat(Female[i].result_of_exam);
+    }
+    const promFemale = sumFemale/largoFemale;
+
+    //Datos para Other
+    var sumOther = 0;
+    const largoOther = Other.length;
+    for (i=0; i<Other.length; i++){
+        sumOther+= parseFloat(Other[i].result_of_exam);
+    }
+    const promOther = sumOther/largoOther;
+    
+    //console.log(fechas)
+    var Admin = Empleado = Medico = Paciente = null;
+    if(req.user.role == 'Admin'){
+        Admin = true;        
+    }
+    if(req.user.role == 'Empleado'){
+        Empleado = true;        
+    }
+    if(req.user.role == 'Paciente'){
+        Paciente = true;        
+    }
+    if(req.user.role == 'Medico'){
+        Medico = true;        
+    }
+    const name = req.user.name;
+    const lastname = req.user.lastname;
+    const sec_lastname = req.user.sec_lastname;
+    const rol = req.user.role;
+    res.render('graphics/generalPromPerGender', {promMale, promFemale, promOther, Admin, Empleado, Paciente, Medico, name, lastname, sec_lastname, rol});
+};
+
+graphicsCtrl.generalPromPerYear = async (req, res)=>{     
+    const date = new Date();
+    const currentYear20 = String(date.getFullYear() - 20);
+    const currentYear40 = String(date.getFullYear() - 40);
+    const currentYear60 = String(date.getFullYear() - 60);
+    const currentYear80 = String(date.getFullYear() - 80);
+    console.log(currentYear20)
+    const Until20 = await Exams.find({$and: [{birthayRel: {$gte: (currentYear20 + '-01-01')}}, {result_of_exam : {$ne : null}}]});
+    const Until40 = await Exams.find({$and: [{birthayRel: {$lte: (currentYear20 + '-01-01')}}, {birthayRel: {$gte: (currentYear40 + '-01-01')}}, {result_of_exam : {$ne : null}}]});
+    const Until60 = await Exams.find({$and: [{birthayRel: {$lte: (currentYear40 + '-01-01')}}, {birthayRel: {$gte: (currentYear60 + '-01-01')}}, {result_of_exam : {$ne : null}}]});
+    const Until80 = await Exams.find({$and: [{birthayRel: {$lte: (currentYear60 + '-01-01')}}, {birthayRel: {$gte: (currentYear80 + '-01-01')}}, {result_of_exam : {$ne : null}}]});
+    const Until90 = await Exams.find({$and: [{birthayRel: {$lte: (currentYear80 + '-01-01')}}, {result_of_exam : {$ne : null}}]});
+    //console.log(Until20)
+    //console.log("-----------------")
+    //console.log(Until40)
+    //console.log("-----------------")
+    //console.log(Until60)
+    //console.log("-----------------")
+    //console.log(Until80)
+    //Datos para hasta 20
+    var sumUntil20 = 0;
+    const largoUntil20 = Until20.length;
+    for (i=0; i<Until20.length; i++){
+        sumUntil20+= parseFloat(Until20[i].result_of_exam);
+    }
+    const promUntil20 = sumUntil20/largoUntil20;
+    
+    //Datos para de 20 hasta 40
+    var sumUntil40 = 0;
+    const largoUntil40 = Until40.length;
+    for (i=0; i<Until40.length; i++){
+        sumUntil40+= parseFloat(Until40[i].result_of_exam);
+    }
+    const promUntil40 = sumUntil40/largoUntil40;
+
+    //Datos para de 40 a 60
+    var sumUntil60 = 0;
+    const largoUntil60 = Until60.length;
+    for (i=0; i<Until60.length; i++){
+        sumUntil60+= parseFloat(Until60[i].result_of_exam);
+    }
+    const promUntil60 = sumUntil60/largoUntil60;
+
+    //Datos para de 60 a 80
+    var sumUntil80 = 0;
+    const largoUntil80 = Until80.length;
+    for (i=0; i<Until80.length; i++){
+        sumUntil80+= parseFloat(Until80[i].result_of_exam);
+    }
+    const promUntil80 = sumUntil80/largoUntil80;
+
+    //Datos para de  80 en adelante
+    var sumUntil90 = 0;
+    const largoUntil90 = Until90.length;
+    for (i=0; i<Until90.length; i++){
+        sumUntil90+= parseFloat(Until90[i].result_of_exam);
+    }
+    const promUntil90 = sumUntil90/largoUntil90;
+    
+    //console.log(fechas)
+    var Admin = Empleado = Medico = Paciente = null;
+    if(req.user.role == 'Admin'){
+        Admin = true;        
+    }
+    if(req.user.role == 'Empleado'){
+        Empleado = true;        
+    }
+    if(req.user.role == 'Paciente'){
+        Paciente = true;        
+    }
+    if(req.user.role == 'Medico'){
+        Medico = true;        
+    }
+    const name = req.user.name;
+    const lastname = req.user.lastname;
+    const sec_lastname = req.user.sec_lastname;
+    const rol = req.user.role;
+    res.render('graphics/generalPromPerYear', {promUntil20, promUntil40, promUntil60, promUntil80, promUntil90, Admin, Empleado, Paciente, Medico, name, lastname, sec_lastname, rol});
+};
+
 module.exports = graphicsCtrl;

@@ -7,15 +7,12 @@
     var myChart = new Chart(ctx, {
         type: 'bar',
         data:{
-            labels: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre',
-                        'Octubre', 'Noviembre', 'Diciembre'],
+            labels: ['Hasta 20 años', 'De 20 a 40 años', 'De 40 a 60 años', 'De 60 a 80 años', 'De 80 años en adelante'],
             //console.log(fechas)
             datasets: [{
-                label: 'Promedio de los resultados en pruebas aplicadas por mes (ug/mL)',
-                data: [{{promEnero}}, {{promFebrero}}, {{promMarzo}}, {{promAbril}}, {{promMayo}}, {{promJunio}},
-                    {{promJulio}}, {{promAgosto}}, {{promSeptiembre}}, {{promOctubre}}, {{promNoviembre}}, {{promDiciembre}}],
+                label: 'Promedio de los resultados en pruebas aplicadas por grupo de edades (ug/mL)',
+                data: [{{promUntil20}}, {{promUntil40}}, {{promUntil60}}, {{promUntil80}}, , {{promUntil90}}],
                 backgroundColor: [
-                'rgba(255, 99, 132, 0.2)',
                 'rgba(54, 162, 235, 0.2)',
                 'rgba(255, 206, 86, 0.2)',
                 'rgba(75, 192, 192, 0.2)',
@@ -23,7 +20,6 @@
                 'rgba(255, 159, 64, 0.2)'
                 ],
                 borderColor: [
-                'rgba(255, 99, 132, 1)',
                 'rgba(54, 162, 235, 1)',
                 'rgba(255, 206, 86, 1)',
                 'rgba(75, 192, 192, 1)',

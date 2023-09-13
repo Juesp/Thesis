@@ -7,13 +7,11 @@
     var myChart = new Chart(ctx, {
         type: 'bar',
         data:{
-            labels: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre',
-                        'Octubre', 'Noviembre', 'Diciembre'],
+            labels: ['Femenino', 'Masculino', 'Otro'],
             //console.log(fechas)
             datasets: [{
-                label: 'Promedio de los resultados en pruebas aplicadas por mes (ug/mL)',
-                data: [{{promEnero}}, {{promFebrero}}, {{promMarzo}}, {{promAbril}}, {{promMayo}}, {{promJunio}},
-                    {{promJulio}}, {{promAgosto}}, {{promSeptiembre}}, {{promOctubre}}, {{promNoviembre}}, {{promDiciembre}}],
+                label: 'Promedio de los resultados en pruebas aplicadas por género (ug/mL)',
+                data: [{{promFemale}}, {{promMale}}, {{promOther}}],
                 backgroundColor: [
                 'rgba(255, 99, 132, 0.2)',
                 'rgba(54, 162, 235, 0.2)',

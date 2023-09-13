@@ -53,6 +53,12 @@ const ExamSchema = new Schema ({
     sec_lastnameRel: {
         type: String
     },
+    genderRel: {
+        type: String
+    },
+    birthayRel: {
+        type: String
+    },
     emailRel: {
         type: String
     }
